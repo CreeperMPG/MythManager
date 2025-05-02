@@ -13,6 +13,11 @@ namespace MythManager.Pages.About
             InitializeComponent();
             VersionInfoBlock.Text = "1.1.0 Release";
             UpdateLogBlock.Text = "更新日志\n" +
+                "1.1.0 Release\n" +
+                "发布时间 2025-5-2 22:44\n" +
+                "\t1. 修复了 1.1.0 Canary 2 限制解除失败的 Bug\n" +
+                "\t2. 添加了解除任务栏右键菜单限制和强制⚡结束机房管理助手的功能\n" +
+                "\n" +
                 "1.1.0 (Canary 2)\n" +
                 "发布时间 2025-5-1 23:00\n" +
                 "\t1. 优化禁用机房管理助手的流程，修复了 1.1.0 Canary 1 禁用机房管理助手后右上角计算机名称未关闭的 Bug\n" +
