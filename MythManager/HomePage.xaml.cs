@@ -29,6 +29,9 @@ namespace MythManager
                 NavView.Resources[ThemeKeys.NavigationViewContentGridBorderThicknessKey] = new Thickness(0.0, 0.0, 0.0, 0.0);
             }
             NavigationInit();
+#if LITE
+            UDPAttackViewItem.IsEnabled = false;
+#endif
         }
 
         public void NavigationInit()

@@ -56,6 +56,10 @@ namespace MythManager.Pages.About
                 "\t2. 添加极域启停功能\n" +
                 "\t3. 添加重放攻击功能，支持 指定多个IP 枚举局域网IP 分组发送数据包 多轮发送 日志显示。频繁发送不会失效\n" +
                 "\t4. 重放攻击方式支持远程 CMD 命令（支持参数）";
+#if LITE
+            VersionInfoBlock.Text += " (轻量版)";
+            VersionInfo.Description = "轻量版不支持部分功能。";
+#endif
         }
 
         private void SettingsCard_SizeChanged(object sender, SizeChangedEventArgs e)

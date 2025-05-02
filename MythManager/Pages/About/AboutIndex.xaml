@@ -10,7 +10,7 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <ui:ScrollViewerEx>
         <ikw:SimpleStackPanel Margin="24" Spacing="8">
-            <ui:SettingsCard Header="版本信息">
+            <ui:SettingsCard Header="版本信息" Name="VersionInfo">
                 <ui:SettingsCard.HeaderIcon>
                     <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.Info_12_Regular}" />
                 </ui:SettingsCard.HeaderIcon>
