@@ -11,8 +11,13 @@ namespace MythManager.Pages.About
         public AboutIndex()
         {
             InitializeComponent();
-            VersionInfoBlock.Text = "1.1.0 Release";
+            VersionInfoBlock.Text = "1.1.1 Canary 1";
             UpdateLogBlock.Text = "更新日志\n" +
+                "1.1.1 (Canary 1)\n" +
+                "发布时间 2025-5-17 12:06\n" +
+                "\t1. 优化 UDP 重放攻击代码\n" +
+                "\t2. 新增黑屏安静攻击功能\n" +
+                "\n" +
                 "1.1.0 Release\n" +
                 "发布时间 2025-5-2 22:44\n" +
                 "\t1. 修复了 1.1.0 Canary 2 限制解除失败的 Bug\n" +

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MythManager.Pages.Home;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -9,30 +10,41 @@ using System.Windows.Controls;
 
 namespace MythManager.Pages.UDPAttack
 {
+    class AttackFunctionInfo
+    {
+        public object Function { get; set; }
+        public Type FunctionType { get; set; }
+        public UDPAttackTypeAttribute FunctionAttribute { get; set; }
+    }
     /// <summary>
     /// AttackIndex.xaml 的交互逻辑
     /// </summary>
     public partial class AttackIndex : UserControl
     {// MythManager.Pages.UDPAttack.AttackIndex
      // Token: 0x04000044 RID: 68
-        private Dictionary<string, IAttackFunction> AttackFunctionDict = new Dictionary<string, IAttackFunction>();
+        private Dictionary<string, AttackFunctionInfo> AttackFunctionDict = new Dictionary<string, AttackFunctionInfo>();
         // Token: 0x0600004C RID: 76 RVA: 0x00003D0C File Offset: 0x00001F0C
         public AttackIndex()
         {
             this.InitializeComponent();
+            // 遍历程序集中的所有类型
             foreach (Type type in Assembly.GetExecutingAssembly().GetTypes())
             {
-                bool flag = type.IsClass && !type.IsAbstract && typeof(IAttackFunction).IsAssignableFrom(type);
+                bool flag = type.IsClass && !type.IsAbstract && Attribute.IsDefined(type, typeof(UDPAttackTypeAttribute));
                 if (flag)
                 {
-                    IAttackFunction attackFunction = (IAttackFunction)Activator.CreateInstance(type);
-                    string nickname = attackFunction.Nickname;
-                    if (type.Namespace.Contains("TeacherAttack"))
+                    object attackFunction = Activator.CreateInstance(type);
+                    var attackTypes = type.GetCustomAttributes(typeof(UDPAttackTypeAttribute), false) as UDPAttackTypeAttribute[];
+                    foreach (UDPAttackTypeAttribute attackType in attackTypes)
                     {
-                        nickname = $"（教师端）{nickname}";
+                        string nickname = attackType.Name;
+                        if (type.Namespace.Contains("TeacherAttack"))
+                        {
+                            nickname = $"（教师端）{nickname}";
+                        }
+                        this.AttackFunctionDict.Add(nickname, new AttackFunctionInfo() { Function = attackFunction, FunctionAttribute = attackType, FunctionType = type });
+                        this.AttackTypeComboBox.Items.Add(nickname);
                     }
-                    this.AttackFunctionDict.Add(nickname, attackFunction);
-                    this.AttackTypeComboBox.Items.Add(nickname);
                 }
             }
             this.AttackTypeComboBox.SelectedIndex = 0;
@@ -90,13 +102,14 @@ namespace MythManager.Pages.UDPAttack
         // Token: 0x06000050 RID: 80 RVA: 0x00003F4A File Offset: 0x0000214A
         private void AttackTypeComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.OptionCard.Content = this.AttackFunctionDict[this.AttackTypeComboBox.SelectedValue as string];
+            this.OptionCard.Content = this.AttackFunctionDict[this.AttackTypeComboBox.SelectedValue as string].Function;
         }
 
         // Token: 0x06000051 RID: 81 RVA: 0x00003F74 File Offset: 0x00002174
         private void StartButton_Click(object sender, RoutedEventArgs e)
         {
-            new AttackDialog(this.AttackFunctionDict[this.AttackTypeComboBox.SelectedValue as string], this).ShowAsync();
+            AttackFunctionInfo info = this.AttackFunctionDict[this.AttackTypeComboBox.SelectedValue as string];
+            new AttackDialog(info.Function, info.FunctionType, info.FunctionAttribute, this).ShowAsync();
         }
 
     }

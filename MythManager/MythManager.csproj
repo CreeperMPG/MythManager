@@ -149,6 +149,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\UDPAttack\AttackFunctions\BlackScreenAttack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\UDPAttack\AttackFunctions\CommandAttack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -181,6 +185,9 @@
     <Compile Include="Pages\UDPAttack\AttackDialog.xaml.cs">
       <DependentUpon>AttackDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\UDPAttack\AttackFunctions\BlackScreenAttack.xaml.cs">
+      <DependentUpon>BlackScreenAttack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\UDPAttack\AttackFunctions\CommandAttack.xaml.cs">
       <DependentUpon>CommandAttack.xaml</DependentUpon>
     </Compile>
@@ -194,7 +201,8 @@
       <DependentUpon>AttackIndex.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UDPAttack\AttackPacket.cs" />
-    <Compile Include="Pages\UDPAttack\IAttackFunction.cs" />
+    <Compile Include="Pages\UDPAttack\AttackTarget.cs" />
+    <Compile Include="Pages\UDPAttack\UDPAttackTypeAttribute.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

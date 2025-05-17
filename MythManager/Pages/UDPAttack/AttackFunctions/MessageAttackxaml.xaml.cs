@@ -9,18 +9,12 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
     /// <summary>
     /// MessageAttackxaml.xaml 的交互逻辑
     /// </summary>
-    public partial class MessageAttackxaml : UserControl, IAttackFunction
+    [UDPAttackType("发送消息", nameof(ConstructPacket), AttackTarget.Student)]
+    public partial class MessageAttackxaml : UserControl
     {
         public MessageAttackxaml()
         {
             InitializeComponent();
-        }
-        public string Nickname
-        {
-            get
-            {
-                return "发送消息";
-            }
         }
         public AttackPacket ConstructPacket(ref string message)
         {

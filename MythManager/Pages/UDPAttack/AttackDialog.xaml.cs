@@ -10,16 +10,20 @@ namespace MythManager.Pages.UDPAttack
 {
     public partial class AttackDialog : Modern.ContentDialog
     {
-        private IAttackFunction _attackFunction;
+        private object _attackFunction;
         private AttackIndex _attackIndex;
+        private Type _functionType;
+        private UDPAttackTypeAttribute _typeAttribute;
         private Thread _attackThread;
         private bool _skipped = false;
         private bool _stopped = false;
 
-        public AttackDialog(IAttackFunction attackFunction, AttackIndex attackIndex)
+        public AttackDialog(object attackFunction, Type functionType, UDPAttackTypeAttribute typeAttribute, AttackIndex attackIndex)
         {
             InitializeComponent();
             _attackFunction = attackFunction;
+            _functionType = functionType;
+            _typeAttribute = typeAttribute;
             _attackIndex = attackIndex;
             _attackThread = new Thread(new ThreadStart(Attack));
             _attackThread.Start();
@@ -87,9 +91,14 @@ namespace MythManager.Pages.UDPAttack
 
                         string message = "";
                         AttackPacket packets = null;
+                        string[] packetConstructorArgs = new string[] { message };
                         base.Dispatcher.Invoke(() =>
                         {
-                            packets = _attackFunction.ConstructPacket(ref message);
+                            var constructorMethod = _functionType.GetMethod(_typeAttribute.PacketConstruct);
+                            if (constructorMethod != null)
+                            {
+                                packets = constructorMethod.Invoke(_attackFunction, packetConstructorArgs) as AttackPacket;
+                            }
                         });
 
                         for (int packetCount = 0; packetCount < packets.AttackPackets.Count; packetCount++)
