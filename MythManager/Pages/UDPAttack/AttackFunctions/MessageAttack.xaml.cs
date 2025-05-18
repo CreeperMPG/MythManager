@@ -10,13 +10,13 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
     /// MessageAttackxaml.xaml 的交互逻辑
     /// </summary>
     [UDPAttackType("发送消息", nameof(ConstructPacket), AttackTarget.Student)]
-    public partial class MessageAttackxaml : UserControl
+    public partial class MessageAttack : UserControl
     {
-        public MessageAttackxaml()
+        public MessageAttack()
         {
             InitializeComponent();
         }
-        public AttackPacket ConstructPacket(ref string message)
+        public AttackPacket ConstructPacket(ref string message, string ip, int cycleCount, int groupCount)
         {
             byte[] packet;
             using (MemoryStream memoryStream = new MemoryStream())
@@ -45,7 +45,7 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
                 memoryStream.Write(payloadBytes, 0, payloadBytes.Length);
 
                 // Command text bytes
-                byte[] commandTextBytes = Encoding.Unicode.GetBytes(Message.Text);
+                byte[] commandTextBytes = Encoding.Unicode.GetBytes(AttackPacket.FormatString(Message.Text, ip, cycleCount, groupCount));
                 memoryStream.Write(commandTextBytes, 0, commandTextBytes.Length);
 
                 int currentPacketLength = (int)memoryStream.Length;

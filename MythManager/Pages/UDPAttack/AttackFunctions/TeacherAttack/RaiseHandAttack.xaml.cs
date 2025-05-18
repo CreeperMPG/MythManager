@@ -14,7 +14,7 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions.TeacherAttack
         {
             InitializeComponent();
         }
-        public AttackPacket ConstructPacket(ref string message)
+        public AttackPacket ConstructPacket(ref string message, string ip, int cycleCount, int groupCount)
         {
             byte[] packetRaise = new byte[72]
             {

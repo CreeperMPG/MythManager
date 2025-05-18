@@ -42,6 +42,17 @@
                 </ui:SettingsExpander.HeaderIcon>
                 <ui:SettingsExpander.Items>
                     <ui:SettingsCard Name="OptionCard" ContentAlignment="Vertical" />
+                    <ui:SettingsCard ContentAlignment="Left">
+                        <ui:SettingsCard.Content>
+                            <Button Content="查看关于字符串格式化的说明" Name="StringFormattingDisplayButton">
+                                <ui:FlyoutService.Flyout>
+                                    <ui:Flyout Placement="Bottom">
+                                        <TextBlock TextWrapping="Wrap" Name="StringFormattingDescription"/>
+                                    </ui:Flyout>
+                                </ui:FlyoutService.Flyout>
+                            </Button>
+                        </ui:SettingsCard.Content>
+                    </ui:SettingsCard>
                 </ui:SettingsExpander.Items>
                 <ComboBox Name="AttackTypeComboBox" IsTextSearchEnabled="False" IsEditable="False" SelectionChanged="AttackTypeComboBox_SelectionChanged" />
             </ui:SettingsExpander>

@@ -26,7 +26,7 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
         {
             InitializeComponent();
         }
-        public AttackPacket ConstructPacket(ref string message)
+        public AttackPacket ConstructPacket(ref string message, string ip, int cycleCount, int groupCount)
         {
             byte[] packetBlack = new byte[55]
             {

@@ -48,6 +48,12 @@ namespace MythManager.Pages.UDPAttack
                 }
             }
             this.AttackTypeComboBox.SelectedIndex = 0;
+            StringFormattingDescription.Text = "只有部分输入框支持字符串格式化\n" +
+                "格式化语法：\n" +
+                "\t${ip} - IP 地址\n" +
+                "\t${cycle} - 攻击轮数\n" +
+                "\t${group} - 攻击组数";
+
         }
         // Token: 0x0600004D RID: 77 RVA: 0x00003DC4 File Offset: 0x00001FC4
         private void InternetIPCollectButton_Click(object sender, RoutedEventArgs e)

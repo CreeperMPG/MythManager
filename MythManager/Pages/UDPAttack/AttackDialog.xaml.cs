@@ -88,10 +88,14 @@ namespace MythManager.Pages.UDPAttack
                                 Thread.Sleep(100);
                             }
                         }
-
+                        int groupCount = 1;
+                        if (groupEnabled)
+                        {
+                            groupCount = (targetIPIndex - 1) / groupMember + 1;
+                        }
                         string message = "";
                         AttackPacket packets = null;
-                        string[] packetConstructorArgs = new string[] { message };
+                        object[] packetConstructorArgs = new object[] { message, currentIP, attackNumber, groupCount };
                         base.Dispatcher.Invoke(() =>
                         {
                             var constructorMethod = _functionType.GetMethod(_typeAttribute.PacketConstruct);

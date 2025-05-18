@@ -157,7 +157,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\UDPAttack\AttackFunctions\MessageAttackxaml.xaml">
+    <Page Include="Pages\UDPAttack\AttackFunctions\MessageAttack.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -191,8 +191,8 @@
     <Compile Include="Pages\UDPAttack\AttackFunctions\CommandAttack.xaml.cs">
       <DependentUpon>CommandAttack.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\UDPAttack\AttackFunctions\MessageAttackxaml.xaml.cs">
-      <DependentUpon>MessageAttackxaml.xaml</DependentUpon>
+    <Compile Include="Pages\UDPAttack\AttackFunctions\MessageAttack.xaml.cs">
+      <DependentUpon>MessageAttack.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\UDPAttack\AttackFunctions\TeacherAttack\RaiseHandAttack.xaml.cs">
       <DependentUpon>RaiseHandAttack.xaml</DependentUpon>

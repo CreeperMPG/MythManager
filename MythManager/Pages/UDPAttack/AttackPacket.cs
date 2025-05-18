@@ -13,5 +13,9 @@ namespace MythManager.Pages.UDPAttack
             TargetPort = targetPort;
             IntervalMiliseconds = intervalMiliseconds;
         }
+        public static string FormatString(string str, string ip, int cycleCount, int groupCount)
+        {
+            return str.Replace("${ip}", ip).Replace("${cycle}", cycleCount.ToString()).Replace("${group}", groupCount.ToString());
+        }
     }
 }
