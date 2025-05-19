@@ -11,8 +11,12 @@ namespace MythManager.Pages.About
         public AboutIndex()
         {
             InitializeComponent();
-            VersionInfoBlock.Text = "1.1.1 Canary 2";
+            VersionInfoBlock.Text = "1.1.1 Release";
             UpdateLogBlock.Text = "更新日志\n" +
+                "1.1.1 Release\n" +
+                "发布时间 2025-5-20 06:44\n" +
+                "\t1. 修复了更新日志页面更新日志不换行的 Bug\n" +
+                "\n" +
                 "1.1.1 (Canary 2)\n" +
                 "发布时间 2025-5-19 06:50\n" +
                 "\t1. UDP 重放攻击添加字符串格式化功能\n" +
@@ -69,11 +73,6 @@ namespace MythManager.Pages.About
             VersionInfoBlock.Text += " (轻量版)";
             VersionInfo.Description = "轻量版不支持部分功能。";
 #endif
-        }
-
-        private void SettingsCard_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            UpdateLogBlock.Width = e.NewSize.Width - 50;
         }
     }
 }

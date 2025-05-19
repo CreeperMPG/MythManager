@@ -23,9 +23,11 @@
                     <ui:FontIcon Icon="{x:Static ui:FluentSystemIcons.PhoneUpdate_20_Regular}" />
                 </ui:SettingsExpander.HeaderIcon>
                 <ui:SettingsExpander.Items>
-                    <ui:SettingsCard ContentAlignment="Left" SizeChanged="SettingsCard_SizeChanged">
+                    <ui:SettingsCard ContentAlignment="Left">
                         <ui:SettingsCard.Content>
-                            <TextBlock HorizontalAlignment="Left" Name="UpdateLogBlock" TextWrapping="WrapWithOverflow" />
+                            <ikw:SimpleStackPanel Name="UpdateLogView" HorizontalAlignment="Left">
+                                <TextBlock HorizontalAlignment="Stretch" Name="UpdateLogBlock" TextWrapping="Wrap" />
+                            </ikw:SimpleStackPanel>
                         </ui:SettingsCard.Content>
                     </ui:SettingsCard>
                 </ui:SettingsExpander.Items>
