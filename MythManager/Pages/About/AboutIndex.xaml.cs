@@ -11,8 +11,12 @@ namespace MythManager.Pages.About
         public AboutIndex()
         {
             InitializeComponent();
-            VersionInfoBlock.Text = "1.1.1 Release";
+            VersionInfoBlock.Text = "1.1.1.1 Release";
             UpdateLogBlock.Text = "更新日志\n" +
+                "1.1.1.1 Release\n" +
+                "发布时间 2025-5-29 06:58\n" +
+                "\t1. 移除了重放攻击功能组间间隔时间的最小值限制\n" +
+                "" +
                 "1.1.1 Release\n" +
                 "发布时间 2025-5-20 06:44\n" +
                 "\t1. 修复了更新日志页面更新日志不换行的 Bug\n" +

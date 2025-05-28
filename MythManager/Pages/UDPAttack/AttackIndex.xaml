@@ -29,7 +29,7 @@
                                 <TextBlock Text="将所有 IP 每" VerticalAlignment="Center" />
                                 <ui:NumberBox Name="GroupIPNumber" Value="12" MinWidth="0" Minimum="1" Maximum="200" MaxWidth="50" />
                                 <TextBlock Text="个分为一组。其中一组发送完毕后等待" VerticalAlignment="Center" />
-                                <ui:NumberBox Name="GroupInterval" Value="8" MinWidth="0" Minimum="1" Maximum="60" MaxWidth="50" />
+                                <ui:NumberBox Name="GroupInterval" Value="8" MinWidth="0" Minimum="0" MaxWidth="50" />
                                 <TextBlock Text="秒发送下一组。" VerticalAlignment="Center" />
                             </ikw:SimpleStackPanel>
                         </ikw:SimpleStackPanel>
